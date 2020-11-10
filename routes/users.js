@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
-
+const passport =  require('passport');
+const jwt =  require('jsonwebtoken');
 const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
@@ -9,8 +10,24 @@ router.get("/", (req, res, next) => {
 
 
 // Register
-router.get('/register',(req,res,next) => {
-  res.send('Register');
+router.post('/register',(req,res,next) => {
+  let newUser  = new User({
+    name: req.body.name,
+    email: req.body.email,
+    username: req.body.username,
+    password: req.body.password,
+    created_at: Date.now(),
+    location:req.body.location || ' ',
+    os: req.body.os  || ' '
+  });
+
+  User.addUser(newUser,(err,user) => {
+    if(err){
+      res.json({ success: false, msg: "Failed to register user" });
+    } else {
+      res.json({ success: true, msg: "user Registered" });
+    }
+  })
 });
 
 
@@ -25,11 +42,6 @@ router.get('/profile',(req,res,next) => {
   res.send('Profile');
 });
 
-
-// Validate
-router.get('/validate',(req,res,next) => {
-  res.send('Validate');
-});
 
 /**
  * Post api to store the user info to the database
