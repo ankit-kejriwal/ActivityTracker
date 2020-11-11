@@ -21,7 +21,8 @@ const UserSchema = mongoose.Schema({
     },
     created_date: { type: Date, default: Date.now },
     location: {
-        type: String
+        type: { type: String },
+        coordinates: [Number],
     },
     os:{
         type:String
