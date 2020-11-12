@@ -29,23 +29,19 @@ const UserSchema = mongoose.Schema({
     },
     clickEvent : [ 
         {
+           userId: mongoose.Schema.Types.ObjectId,
            tag : String,
-           clickType : Number,
+           eventType : Number,
            timeStamp : Number
         }
     ],
     hoverEvent : [ 
         {
            tag : String,
+           userid: mongoose.Schema.Types.ObjectId,
            timeStamp : Number
         }
-    ],
-    pageEvent : [ 
-        {
-           page : String,
-           timeStamp : Number
-        }
-    ]   
+    ]
 })
 
 const User  = module.exports =  mongoose.model('User',UserSchema);

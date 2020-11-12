@@ -4,6 +4,7 @@ const passport =  require('passport');
 const jwt =  require('jsonwebtoken');
 const config = require('../config/database')
 const User = require("../models/User");
+const Event = require("../models/Event");
 
 router.get("/", (req, res, next) => {
   res.send("Inside route");
@@ -69,6 +70,22 @@ router.post('/authenticate',(req,res,next) => {
 // Profile
 router.get('/profile',passport.authenticate('jwt',{session:false}),(req,res,next) => {
   res.send({user: req.user});
+});
+
+// add event
+
+// Register
+router.post('/addevent/:id',(req,res,next) => {
+  console.log(req.body);
+
+  console.log(req.params.id);
+  User.findByIdAndUpdate(req.params.id, 
+    { $addToSet: { clickEvent: { $each:req.body.eventObj  } } },
+     function (err, post) {
+    if (err) return next(err);
+    console.log('click added to db');
+    res.json(post);
+  });
 });
 
 
