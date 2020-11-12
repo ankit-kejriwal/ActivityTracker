@@ -17,4 +17,10 @@ export class EventService {
     headers.append('Content-Type','application/json');
     return this.http.post('http://localhost:3000/users/addevent/' + user.id, clickevent, {headers});
   }
+
+  getUser(){
+    const headers = new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    return this.http.get('http://localhost:3000/users/' , {headers});
+  }
 }
