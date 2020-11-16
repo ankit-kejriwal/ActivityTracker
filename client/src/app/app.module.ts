@@ -14,6 +14,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { EventService } from './services/event.service';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { MapComponent } from './components/map/map.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     NavbarComponent,
     HomeComponent,
     DashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

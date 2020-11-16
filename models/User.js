@@ -27,21 +27,21 @@ const UserSchema = mongoose.Schema({
     os:{
         type:String
     },
-    clickEvent : [ 
-        {
-           userId: mongoose.Schema.Types.ObjectId,
-           tag : String,
-           eventType : Number,
-           timeStamp : Number
-        }
-    ],
-    hoverEvent : [ 
-        {
-           tag : String,
-           userid: mongoose.Schema.Types.ObjectId,
-           timeStamp : Number
-        }
-    ]
+    // clickEvent : [ 
+    //     {
+    //        userId: mongoose.Schema.Types.ObjectId,
+    //        tag : String,
+    //        eventType : Number,
+    //        timeStamp : Number
+    //     }
+    // ],
+    // hoverEvent : [ 
+    //     {
+    //        tag : String,
+    //        userid: mongoose.Schema.Types.ObjectId,
+    //        timeStamp : Number
+    //     }
+    // ]
 })
 
 const User  = module.exports =  mongoose.model('User',UserSchema);

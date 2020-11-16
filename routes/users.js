@@ -87,8 +87,9 @@ router.post('/addevent/:id',(req,res,next) => {
   console.log(req.body);
 
   console.log(req.params.id);
-  User.findByIdAndUpdate(req.params.id, 
-    { $addToSet: { clickEvent: { $each:req.body.eventObj  } } },
+  options = { upsert: true, new: true, setDefaultsOnInsert: true };
+  Event.findByIdAndUpdate(req.params.id, 
+    { $addToSet: { clickEvent: { $each:req.body.eventObj  } } }, options,
      function (err, post) {
     if (err) return next(err);
     console.log('click added to db');

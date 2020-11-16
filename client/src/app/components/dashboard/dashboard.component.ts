@@ -105,7 +105,6 @@ class ClickEvents {
       eventType: clickId,
       tag: element,
       timeStamp: timeStamp,
-      userId: uid,
     };
     eventsObj.addEvent(eventsData);
   }
@@ -121,7 +120,6 @@ class Events {
   }
 }
 interface eventsDataInterface {
-  userId: any;
   eventType: Number;
   tag: String;
   timeStamp: Number;
