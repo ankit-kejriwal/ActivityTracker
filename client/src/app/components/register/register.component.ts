@@ -30,6 +30,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
           type: 'point',
           coordinates: [longitude, latitude],
         };
+        console.log(latitude);
+        console.log(longitude);
         this.registerUser();
       });
     } else {

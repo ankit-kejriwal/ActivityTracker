@@ -1,12 +1,25 @@
-.feature {
+.stroke {
   fill: none;
-  stroke: grey;
-  stroke-width: 1px;
-    stroke-linejoin: round;
+  stroke: #000;
+  stroke-width: 3px;
 }
-.mesh {
+.fill {
+  fill: #2e2c2f;
+}
+
+.graticule {
   fill: none;
-    stroke: lightgrey;
-    stroke-width: 2px;
-    stroke-linejoin: round;
+  stroke: #777;
+  stroke-width: .5px;
+  stroke-opacity: .5;
+}
+
+.land {
+  fill: #CCC;
+}
+
+.boundary {
+  fill: none;
+  stroke: #fff;
+  stroke-width: .5px;
 }

@@ -9,7 +9,8 @@ import { takeUntil } from 'rxjs/operators';
   styleUrls: ['./admin-dashboard.component.scss']
 })
 export class AdminDashboardComponent implements OnInit, OnDestroy {
-
+  locationData: any[] = [];
+  displayFlag: boolean = false;
   componentDestroyed$: Subject<boolean> = new Subject();
   constructor(private eventService: EventService) { }
   ngOnDestroy(): void {
@@ -22,7 +23,10 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
       .getUser()
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe((data: any) => {
-        console.log(data);
+        data.forEach(element => {
+          this.locationData.push(element.location);
+        });
+        this.displayFlag = true;
       });
   }
 
