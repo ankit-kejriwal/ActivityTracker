@@ -17,6 +17,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { MapComponent } from './components/map/map.component';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { BarChartComponent } from './components/bar-chart/bar-chart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UserTableComponent } from './components/user-table/user-table.component
     AdminDashboardComponent,
     MapComponent,
     PieChartComponent,
-    UserTableComponent
+    UserTableComponent,
+    AnalyticsComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
