@@ -12,7 +12,6 @@ export class MapComponent implements OnInit {
 
   ngOnInit(): void {
     this.drawGraph(this.item);
-    console.log(this.item);
   }
 
   drawGraph(item){

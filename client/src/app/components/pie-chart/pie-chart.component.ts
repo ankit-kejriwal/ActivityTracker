@@ -11,7 +11,6 @@ export class PieChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.drawPieChart();
-    console.log(this.item);
   }
   drawPieChart() {
     var w = 300;
@@ -26,14 +25,7 @@ export class PieChartComponent implements OnInit {
         value : this.item[key]
       };
       data.push(obj);
-      // console.log(key, yourobject[key]);
     }
-
-    // var data = [
-    //   { label: 'Category A', value: 20 },
-    //   { label: 'Category B', value: 50 },
-    //   { label: 'Category C', value: 30 },
-    // ];
 
     var vis = d3
       .select('#pieChart')

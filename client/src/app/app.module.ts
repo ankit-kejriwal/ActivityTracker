@@ -19,6 +19,7 @@ import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { UserTableComponent } from './components/user-table/user-table.component';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { BarChartComponent } from './components/bar-chart/bar-chart.component';
+import { PageTableComponent } from './components/page-table/page-table.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
     PieChartComponent,
     UserTableComponent,
     AnalyticsComponent,
-    BarChartComponent
+    BarChartComponent,
+    PageTableComponent
   ],
   imports: [
     BrowserModule,

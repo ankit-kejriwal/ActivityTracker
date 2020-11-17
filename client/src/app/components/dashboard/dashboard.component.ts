@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.addPageEvent();
     const clickEventObj = new ClickEvents(this.http);
     const image1 = document.getElementById('image1') as HTMLElement;
     const image2 = document.getElementById('image2') as HTMLElement;
@@ -95,6 +96,15 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // this.componentDestroyed$.next(true);
     // this.componentDestroyed$.complete();
+  }
+
+  addPageEvent(){
+    this.eventService
+      .addPageEvent()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((data: any) => {
+
+      });
   }
 }
 class ClickEvents {

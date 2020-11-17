@@ -10,7 +10,6 @@ export class UserTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.item);
   }
 
 }

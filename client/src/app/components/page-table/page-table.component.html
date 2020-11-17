@@ -1,0 +1,17 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Page</th>
+      <th scope="col">Count</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let page of item; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ page.label }}</td>
+      <td>{{ page.value }}</td>
+    </tr>
+  </tbody>
+</table>

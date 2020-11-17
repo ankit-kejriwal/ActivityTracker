@@ -23,6 +23,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.addPageEvent();
     this.eventService
       .getUser()
       .pipe(takeUntil(this.componentDestroyed$))
@@ -40,5 +41,15 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
         this.displayPieChart = true;
       });
   }
+  addPageEvent(){
+    const user: any = JSON.parse(localStorage.getItem('user'));
+    if (user && user.id){
+      this.eventService
+      .addPageEvent()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((data: any) => {
 
+      });
+    }
+  }
 }

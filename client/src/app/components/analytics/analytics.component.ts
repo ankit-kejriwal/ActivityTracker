@@ -6,18 +6,21 @@ import { takeUntil } from 'rxjs/operators';
 @Component({
   selector: 'app-analytics',
   templateUrl: './analytics.component.html',
-  styleUrls: ['./analytics.component.scss']
+  styleUrls: ['./analytics.component.scss'],
 })
 export class AnalyticsComponent implements OnInit, OnDestroy {
   clickData: any[] = [];
+  pageVisitedData = {};
+  pageData = [];
   displayContent: boolean = false;
   componentDestroyed$: Subject<boolean> = new Subject();
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService) {}
   ngOnDestroy(): void {
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.complete();
   }
   ngOnInit(): void {
+    this.addPageEvent();
     this.eventService
       .getUserEvent()
       .pipe(takeUntil(this.componentDestroyed$))
@@ -27,6 +30,31 @@ export class AnalyticsComponent implements OnInit, OnDestroy {
         });
         this.displayContent = true;
       });
+      this.getPageEvent();
   }
-
+  addPageEvent() {
+    this.eventService
+      .addPageEvent()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((data: any) => {});
+  }
+  getPageEvent() {
+    this.eventService
+      .getPageEvent()
+      .pipe(takeUntil(this.componentDestroyed$))
+      .subscribe((data: any) => {
+        data.pageEvent.forEach((ele) => {
+          this.pageVisitedData[ele.page] =
+            (this.pageVisitedData[ele.page] || 0) + 1;
+        });
+        // tslint:disable-next-line: forin
+        for (let key in this.pageVisitedData) {
+          const obj = {
+            label: key,
+            value: this.pageVisitedData[key],
+          };
+          this.pageData.push(obj);
+        }
+      });
+  }
 }

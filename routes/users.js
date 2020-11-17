@@ -5,6 +5,7 @@ const jwt =  require('jsonwebtoken');
 const config = require('../config/database')
 const User = require("../models/User");
 const Event = require("../models/Event");
+const PageEvent = require("../models/PageEvent");
 
 // router.get("/", (req, res, next) => {
 //   res.send("Inside route");
@@ -127,6 +128,26 @@ router.get("/getevent/:id", function (req, res, next) {
   Event.findById(req.params.id, function (err, userEvent) {
     if (err) res.json({ success: false, msg: "Failed to find a user Event" });
     res.json(userEvent);
+  });
+});
+
+
+router.post('/addpageevent/:id',(req,res,next) => {
+  
+  options = { upsert: true, new: true, setDefaultsOnInsert: true };
+  PageEvent.findByIdAndUpdate(req.params.id, 
+    { $push: { pageEvent: req.body } }, options,
+     function (err, post) {
+    if (err) return next(err);
+    console.log('click added to db');
+    res.json(post);
+  });
+});
+
+router.get("/getPageEvent/:id", function (req, res, next) {
+  PageEvent.findById(req.params.id, function (err, pageEvent) {
+    if (err) res.json({ success: false, msg: "Failed to find a page event" });
+    res.json(pageEvent);
   });
 });
 module.exports = router;

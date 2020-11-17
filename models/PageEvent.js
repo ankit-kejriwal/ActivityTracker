@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 // const config = require('../models/')
 
 const PageEventSchema = mongoose.Schema({
-    userid: mongoose.Schema.Types.ObjectId,
     pageEvent : [ 
         {   
            page : String,

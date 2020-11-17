@@ -1,1 +1,8 @@
-<app-bar-chart *ngIf="displayContent" [item]="clickData"></app-bar-chart>
+
+
+<div class="container">
+  <div><app-bar-chart class="chart"  *ngIf="displayContent" [item]="clickData"></app-bar-chart></div>
+  <div class="page-table-size">
+    <app-page-table class="chart"  *ngIf="displayContent" [item]="pageData"></app-page-table>
+  </div>
+ </div>
