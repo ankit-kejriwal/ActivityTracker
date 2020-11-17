@@ -41,7 +41,7 @@ import { BarChartComponent } from './components/bar-chart/bar-chart.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService,EventService],
+  providers: [AuthService, EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
