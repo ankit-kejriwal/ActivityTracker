@@ -28,7 +28,8 @@ router.post('/register',(req,res,next) => {
     password: req.body.password,
     created_at: Date.now(),
     location:req.body.location || ' ',
-    os: req.body.os  || ' '
+    os: req.body.os  || ' ',
+    browser: req.body.browser || ' '
   });
 
   User.addUser(newUser,(err,user) => {

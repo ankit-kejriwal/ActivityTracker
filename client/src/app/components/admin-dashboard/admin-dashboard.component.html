@@ -1,1 +1,6 @@
-<app-map *ngIf="displayFlag" [item] = "locationData"></app-map>
+
+<div class="container">
+  <div><app-map class="chart" *ngIf="displayMap" [item]="locationData"></app-map></div>
+  <div><app-pie-chart  class="chart" *ngIf="displayPieChart" [item]="pieChartBrowserData"></app-pie-chart></div>
+  <div><app-pie-chart class="chart" *ngIf="displayPieChart" [item]="pieChartOSData"></app-pie-chart></div>
+</div>

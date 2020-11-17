@@ -15,6 +15,7 @@ import { AuthService } from './services/auth.service';
 import { EventService } from './services/event.service';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { MapComponent } from './components/map/map.component';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MapComponent } from './components/map/map.component';
     HomeComponent,
     DashboardComponent,
     AdminDashboardComponent,
-    MapComponent
+    MapComponent,
+    PieChartComponent
   ],
   imports: [
     BrowserModule,

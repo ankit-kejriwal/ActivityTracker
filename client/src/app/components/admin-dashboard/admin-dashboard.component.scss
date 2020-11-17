@@ -1,0 +1,15 @@
+// .divLeft {
+//   float: left;
+// }
+// .divRight {
+//   float: left;
+//   margin-left: 20px;
+// }
+
+.container {
+  display: flex;
+}
+.chart {
+  flex: 1; /*grow*/
+}
+

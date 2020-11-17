@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { browser } from 'protractor';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   password: String;
   location: object;
   os: String;
+  browser: String;
   constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
@@ -32,6 +34,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         };
         console.log(latitude);
         console.log(longitude);
+        this.browser = this.getBrowser();
         this.registerUser();
       });
     } else {
@@ -55,6 +58,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
       password: this.password,
       os: this.getOsName(),
       location: this.location,
+      browser: this.browser
     };
     this.authService
       .registerUser(user)
@@ -95,5 +99,31 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.componentDestroyed$.next(true);
     this.componentDestroyed$.complete();
+  }
+  getBrowser(){
+    if((navigator.userAgent.indexOf('Opera') || navigator.userAgent.indexOf('OPR')) != -1 )
+    {
+        return ('Opera');
+    }
+    else if(navigator.userAgent.indexOf('Chrome') != -1 )
+    {
+        return ('Chrome');
+    }
+    else if(navigator.userAgent.indexOf('Safari') != -1)
+    {
+        return ('Safari');
+    }
+    else if(navigator.userAgent.indexOf('Firefox') != -1 )
+    {
+         return ('Firefox');
+    }
+    else if((navigator.userAgent.indexOf('MSIE') != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+    {
+      return ('IE');
+    }
+    else
+    {
+       return ('unknown');
+    }
   }
 }

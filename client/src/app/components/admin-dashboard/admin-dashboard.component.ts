@@ -10,7 +10,10 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class AdminDashboardComponent implements OnInit, OnDestroy {
   locationData: any[] = [];
-  displayFlag: boolean = false;
+  pieChartOSData = {};
+  pieChartBrowserData = {};
+  displayMap: boolean = false;
+  displayPieChart: boolean = false;
   componentDestroyed$: Subject<boolean> = new Subject();
   constructor(private eventService: EventService) { }
   ngOnDestroy(): void {
@@ -26,7 +29,13 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
         data.forEach(element => {
           this.locationData.push(element.location);
         });
-        this.displayFlag = true;
+
+        data.forEach((ele) => {
+          this.pieChartOSData[ele.os] = (this.pieChartOSData[ele.os] || 0) + 1;
+          this.pieChartBrowserData[ele.browser] = (this.pieChartBrowserData[ele.browser] || 0) + 1;
+        });
+        this.displayMap = true;
+        this.displayPieChart = true;
       });
   }
 

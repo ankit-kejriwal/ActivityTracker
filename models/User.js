@@ -27,6 +27,9 @@ const UserSchema = mongoose.Schema({
     os:{
         type:String
     },
+    browser:{
+        type:String
+    },
     // clickEvent : [ 
     //     {
     //        userId: mongoose.Schema.Types.ObjectId,
