@@ -4,3 +4,4 @@
   <div><app-pie-chart  class="chart" *ngIf="displayPieChart" [item]="pieChartBrowserData"></app-pie-chart></div>
   <div><app-pie-chart class="chart" *ngIf="displayPieChart" [item]="pieChartOSData"></app-pie-chart></div>
 </div>
+<app-user-table *ngIf="displayPieChart" [item]="users"></app-user-table>

@@ -1,0 +1,25 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Latitude</th>
+      <th scope="col">Longitude</th>
+      <th scope="col">OS</th>
+      <th scope="col">Browser</th>
+      <th scope="col">Created Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let user of item; let i = index">
+      <td>{{ i + 1 }}</td>
+      <td>{{ user.email }}</td>
+      <td>{{ user.location.coordinates[1] }}</td>
+      <td>{{ user.location.coordinates[0] }}</td>
+      <td>{{ user.os }}</td>
+      <td>{{ user.browser }}</td>
+      <td>{{ user.created_date }}</td>
+    </tr>
+  </tbody>
+</table>

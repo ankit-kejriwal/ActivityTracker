@@ -10,6 +10,7 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class AdminDashboardComponent implements OnInit, OnDestroy {
   locationData: any[] = [];
+  users: any[] = [];
   pieChartOSData = {};
   pieChartBrowserData = {};
   displayMap: boolean = false;
@@ -34,6 +35,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
           this.pieChartOSData[ele.os] = (this.pieChartOSData[ele.os] || 0) + 1;
           this.pieChartBrowserData[ele.browser] = (this.pieChartBrowserData[ele.browser] || 0) + 1;
         });
+        this.users = data;
         this.displayMap = true;
         this.displayPieChart = true;
       });
