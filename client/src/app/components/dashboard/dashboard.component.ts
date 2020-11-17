@@ -30,7 +30,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
     var count = 0;
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationStart) {
-        console.log(count++);
         this.updateUser();
       }
     });
