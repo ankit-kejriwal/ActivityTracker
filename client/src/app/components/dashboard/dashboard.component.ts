@@ -37,40 +37,44 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    var clickEventObj = new ClickEvents(this.http);
-    var image1 = <HTMLElement>document.getElementById('image1');
-    var image2 = <HTMLElement>document.getElementById('image2');
-    var image3 = <HTMLElement>document.getElementById('image3');
-    var image4 = <HTMLElement>document.getElementById('image4');
-    var image5 = <HTMLElement>document.getElementById('image5');
+    const clickEventObj = new ClickEvents(this.http);
+    const image1 = document.getElementById('image1') as HTMLElement;
+    const image2 = document.getElementById('image2') as HTMLElement;
+    const image3 = document.getElementById('image3') as HTMLElement;
+    const download = document.getElementById('download') as HTMLElement;
+    const upload = document.getElementById('upload') as HTMLElement;
+    const reset = document.getElementById('reset') as HTMLElement;
 
-    var eventsObj = new Events();
+    const eventsObj = new Events();
     this.eventsObj = eventsObj;
-    var uid = this.user.id;
+    const uid = this.user.id;
 
     // Clicks
     // e.button == 0 -> left click
     //             1 -> Middle click
     //             2 -> Right Click
-    image1.onmousedown = function (e) {
+    image1.onmousedown =  (e) => {
       clickEventObj.Onclick(uid, 'image1', eventsObj, e.button);
     };
-    image2.onmousedown = function (e) {
+    image2.onmousedown =  (e) => {
       clickEventObj.Onclick(uid, 'image2', eventsObj, e.button);
     };
-    image3.onmousedown = function (e) {
+    image3.onmousedown =  (e) => {
       clickEventObj.Onclick(uid, 'image3', eventsObj, e.button);
     };
-    image4.onmousedown = function (e) {
-      clickEventObj.Onclick(uid, 'image4', eventsObj, e.button);
+    download.onmousedown =  (e) => {
+      clickEventObj.Onclick(uid, 'download', eventsObj, e.button);
     };
-    image5.onmousedown = function (e) {
-      clickEventObj.Onclick(uid, 'image5', eventsObj, e.button);
+    upload.onmousedown =  (e) => {
+      clickEventObj.Onclick(uid, 'upload', eventsObj, e.button);
+    };
+    reset.onmousedown =  (e) => {
+      clickEventObj.Onclick(uid, 'reset', eventsObj, e.button);
     };
   }
 
   updateUser() {
-    if(this.eventsObj.eventsArray.length){
+    if (this.eventsObj.eventsArray.length){
     console.log(this.eventsObj);
     var data = {
       eventObj: this.eventsObj.eventsArray
@@ -80,7 +84,6 @@ export class DashboardComponent implements OnInit, OnDestroy {
       .addEvent(data)
       .pipe(takeUntil(this.componentDestroyed$))
       .subscribe((data: any) => {
-        //clearing the activity array after updating the database
         this.eventsObj.eventsArray = [];
 
         if (data.success) {
@@ -99,13 +102,13 @@ class ClickEvents {
   constructor(private http: HttpClient) {}
 
   Onclick(uid, element, eventsObj, clickId) {
-    var timeStamp = Math.floor(Date.now() / 1000);
+    const timeStamp = Math.floor(Date.now() / 1000);
 
-    let eventsData = <eventsDataInterface>{
+    const eventsData = {
       eventType: clickId,
       tag: element,
-      timeStamp: timeStamp,
-    };
+      timeStamp,
+    } as eventsDataInterface;
     eventsObj.addEvent(eventsData);
   }
 }
@@ -119,6 +122,7 @@ class Events {
     this.eventsArray.push(node);
   }
 }
+// tslint:disable-next-line: class-name
 interface eventsDataInterface {
   eventType: Number;
   tag: String;
