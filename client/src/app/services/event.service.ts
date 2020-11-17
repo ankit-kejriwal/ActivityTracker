@@ -23,4 +23,11 @@ export class EventService {
     headers.append('Content-Type','application/json');
     return this.http.get('http://localhost:3000/users/' , {headers});
   }
+
+  getUserEvent(){
+    const headers = new HttpHeaders();
+    headers.append('Content-Type','application/json');
+    let user: any = JSON.parse(localStorage.getItem('user'));
+    return this.http.get('http://localhost:3000/users/getevent/' + user.id, {headers});
+  }
 }
