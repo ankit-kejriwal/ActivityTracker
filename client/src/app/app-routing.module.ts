@@ -5,7 +5,6 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
   {
@@ -29,10 +28,10 @@ const routes: Routes = [
     path: 'admindashboard',
     component: AdminDashboardComponent
   },
-  {
-    path: 'analytics',
-    component: UserDashboardComponent
-  }
+  // {
+  //   path: 'analytics',
+  //   component: UserDashboardComponent
+  // }
 ];
 
 @NgModule({
