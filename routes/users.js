@@ -123,4 +123,10 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
+router.get("/getevent/:id", function (req, res, next) {
+  Event.findById(req.params.id, function (err, userEvent) {
+    if (err) res.json({ success: false, msg: "Failed to find a user Event" });
+    res.json(userEvent);
+  });
+});
 module.exports = router;
