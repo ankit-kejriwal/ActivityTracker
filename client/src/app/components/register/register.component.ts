@@ -117,7 +117,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     {
          return ('Firefox');
     }
-    else if((navigator.userAgent.indexOf('MSIE') != -1 ) || (!!document.documentMode == true )) //IF IE > 10
+    else if((navigator.userAgent.indexOf('MSIE') != -1 )) //IF IE > 10
     {
       return ('IE');
     }
